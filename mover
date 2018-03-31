@@ -2,14 +2,25 @@
 
 # sysinfo_page - Moves relevant files to correct server base directory
 
+if [ -z $1 ]; then
+    echo "No minecraft version given (ex: 1.11.2)"
+    exit 2
+fi
+
+if [ -z $2 ]; then
+    echo "No server directory name given (ex: myserver)"
+    exit 2
+fi
+
+
 from="forge_stores/$1/."
 to="../servers/$2"
-jarfile="minecraft_forge.$1.jar"
+jarfile="minecraft-forge-$1.jar"
 serverfile="minecraft_server.$1.jar"
 servercreated=true
 
 
-if [ ! -f "jarfile" ]; then
+if [ ! -f "$jarfile" ]; then
   echo "Cannot continue as you have not downloaded the jar file for the server by going to multicraft settings->update minecraft"
   exit
 fi
@@ -31,17 +42,17 @@ fi
 
 
 if [ ! -d "$to" ]; then
- echo "The server base directory '$to' does not exist, creating it now, but be sure to use it as the base directory in your multicraft server config."
+ echo "The server base directory '$2' does not exist, creating it now, but be sure to use it as the base directory in your multicraft server config."
   mkdir -p $to
   servercreated=false
 fi
 
 
 cp -a "$from" "$to"
-cp -a "minecraft_forge.$1.jar" $to
+cp -a "minecraft-forge-$1.jar" $to
 
 echo "Your files and folders have now been copied"
 
-if [ servercreated == false ]; then
- echo "Dont forget in multicraft when creating this server, set the base dir as '$2"
+if [ "$servercreated" = false ]; then
+ echo "Dont forget in multicraft when creating this server, set the base dir as '$2'"
 fi
