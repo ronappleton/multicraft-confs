@@ -26,3 +26,17 @@ And thats it you can start the server it it will load.
 
 The conf files are set to run the forge jar from your server base directory, this
 way we can have multiple forge servers on a multicraft panel
+
+
+# Helper
+
+There is now a helper file called mover, after extracting the archive to your jar folder, use
+
+        chmod +x mover
+        
+Now when you need to setup a server, just use
+
+        ./mover 1.11.2 myserver
+        
+and it will move all the files automatically, however you do have to have been in to multicraft and updated the jat and conf in settings>uodate minecraft first 
+or it wont find the correct jar file fo copy for forge
