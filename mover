@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# sysinfo_page - Moves relevant files to correct server base directory
+
+from="forge_stores/$1/."
+to="../servers/$2"
+jarfile="minecraft_forge.$1.jar"
+serverfile="minecraft_server.$1.jar"
+servercreated=true
+
+
+if [ ! -f "jarfile" ]; then
+  echo "Cannot continue as you have not downloaded the jar file for the server by going to multicraft settings->update minecraft"
+  exit
+fi
+
+if [ ! -d "forge_stores/$1" ]; then
+  echo "Cannot continue as library files do not exist for version '$1'"
+  exit
+fi
+
+if [ ! -d "forge_stores/$1/libraries" ]; then
+  echo "Cannot continue as library files do not exist for version '$1'"
+  exit
+fi
+
+if [ ! -f "forge_stores/$1/$serverfile" ]; then
+  echo "Cannot continue as server file does not exist within the library for version '$1'"
+  exit
+fi
+
+
+if [ ! -d "$to" ]; then
+ echo "The server base directory '$to' does not exist, creating it now, but be sure to use it as the base directory in your multicraft server config."
+  mkdir -p $to
+  servercreated=false
+fi
+
+
+cp -a "$from" "$to"
+cp -a "minecraft_forge.$1.jar" $to
+
+echo "Your files and folders have now been copied"
+
+if [ servercreated == false ]; then
+ echo "Dont forget in multicraft when creating this server, set the base dir as '$2"
+fi
