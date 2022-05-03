@@ -13,7 +13,7 @@ The best way to use this repo is to download the zip for the archive and upload 
   will crash but thats ok. Stop your server.
   
   Now copy the relevant library and server from forge_stores into your servers base directory, then chown
-  the copied libraries folder recursively to the server user ie 
+  the copied libraries folder recursively to the server user i.e.
             
             chown -R mc3:mc3 libraries
             
@@ -25,7 +25,7 @@ also to your server base directory and chown that too.
 And thats it you can start the server it it will load.
 
 The conf files are set to run the forge jar from your server base directory, this
-way we can have multiple forge servers on a multicraft panel
+way we can have multiple forge servers on a multicraft panel.
 
 
 # Helper
@@ -38,5 +38,5 @@ Now when you need to setup a server, just use
 
         ./mover 1.11.2 myserver
         
-and it will move all the files automatically, however you do have to have been in to multicraft and updated the jat and conf in settings>uodate minecraft first 
-or it wont find the correct jar file fo copy for forge
+and it will move all the files automatically, however you do have to have been into multicraft and updated the jar and conf in settings >> update minecraft first 
+or it wont find the correct jar file to copy for forge.
